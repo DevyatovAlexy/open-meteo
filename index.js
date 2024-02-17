@@ -1,14 +1,15 @@
 const fetch = require('node-fetch')
-const WEATHER_API_BASE_URL = 'https://api.open-meteo.com/v1/forecast'
 
 async function snowMeteo(latitude, longitude) {
-    const url = new URL('https://api.open-meteo.com/v1/forecast')
+    const WEATHER_API_BASE_URL =new URL('https://api.open-meteo.com/v1/forecast')
     const params = {
         latitude: latitude, longitude: longitude, current: 'temperature_2m,wind_speed_10m'
     }
-    url.search = new URLSearchParams(params).toString();
-    const response = await fetch(url)
+   WEATHER_API_BASE_URL.search = new URLSearchParams(params).toString();
+
+    const response = await fetch(WEATHER_API_BASE_URL)
     const json = await response.json()
     console.log(json.current.temperature_2m)
 }
+
 snowMeteo(57.09, 65.32)
