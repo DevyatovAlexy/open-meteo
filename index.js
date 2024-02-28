@@ -6,8 +6,8 @@ const temp = require('./meteo')
 
     app.get('/temperature',
        async function (req, res) {
-         let q = await temp(req.query.name)
-           res.send(q)
+         let result = await temp(req.query.cityName)
+           res.send(result)
         })
 
 app.listen(port, () => {
